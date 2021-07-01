@@ -5,7 +5,7 @@ import csv
 #import statistics to calculate average, min and max
 import statistics as st
 
-#creating the listas to acumulate data
+#creating the lists to acumulate data
 monthslist = []
 amountlist = []
 difference = []
@@ -15,12 +15,12 @@ initialcsv = os.path.join("Resources", "budget_data.csv")
 final = os.path.join("Analysis", "pybank_analysis.txt")
 
 #open CSV
-with open (initialcsv,'r') as csvfile:
-    csvreader= csv.reader(csvfile, delimiter=',')
-    Headers = next(csvreader)
+with open (initialcsv,'r') as pybankdata:
+    pybankfinal= csv.reader(pybankdata, delimiter=',')
+    Headers = next(pybankfinal)
 
     #to storage csv data in lists
-    for row in csvreader:
+    for row in pybankfinal:
         monthslist.append(row[0])
         amountlist.append(int(row[1]))
 
@@ -32,9 +32,10 @@ for i in amountlist:
 #insert a 0 in the first row so the table has the same lenght
 difference.insert(0,0)
 
-#to enter data to the difference list
-for i in amountlist:
-    difference.append(amountlist [i+1] - amountlist [i])
+#to enter data to the difference list. 
+# You do range (1,len(namelist)) because you need a number for i. Always do i and i-1
+for i in range(1, len(amountlist)):
+    difference.append(amountlist [i] - amountlist [i-1])
 
 maxamount = max(difference)
 minamount= min(difference)
