@@ -48,7 +48,7 @@ maxdate = monthslist[maxamountindex]
 mindate = monthslist[minamountindex]
 
 #create average variable
-averagepl = st.mean(difference)
+averagepl = st.mean(difference[1:])
 
 #print all the information
 Analysis_PyBank = (f"Financial Analysis\n"
